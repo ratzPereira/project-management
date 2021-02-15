@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+ 
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ 
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=l6SIq-pPt13cG2rJQTptXiJZKJ1Z1GvKQuJVcDzYMDtwrI82ycPcDFQFntj2zcx1HEolcu5BqRrqsj-fjRE_bti4vGCFoV_fCrwePUFpRnEOyV-OCl7W5IYChdMWlA8f_LVsFQmNchkoFi3Omi0VsVDJfGhOhn84sc9l9OflhjXYBdFQ_N2_I8O-iR5t0qC6zSG8tJ9wYf0-qZl6H0r0EbgR6ZxTrQ25xnLPV-ZvZyXzCuE1iEhL0dIjdP2t45Pk" charset="UTF-8"></script></head>
+</head>
+<body>
+ 
+	
+	<div class="container">
+		<form action="/projects/save" th:object="${project}" method="POST">
+		
+		<input type="text" placeholder="Project Name" th:field="${project.name}">
+		
+		<select th:field="${project.stage}">
+			<option th:value="NOTSTARTED"> Not Started</option>
+			<option th:value="INPROGRESS"> In Progress</option>
+			<option th:value="COMPLETED"> Completed</option>
+		</select>
+		
+		<textarea placeholder="Enter Project Description" th:field="${project.description}"></textarea>
+		
+		<button type="submit">Create Project</button>
+		
+		</form>
+	</div>
+	
+</body>
+ 
+</html>
