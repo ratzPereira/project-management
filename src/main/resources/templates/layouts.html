@@ -2,7 +2,7 @@
  
 <html xmlns:th="http://www.thymeleaf.org">
  
-<head>
+<head th:fragment ="header">
 	<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,51 +13,28 @@
  
 <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=l6SIq-pPt13cG2rJQTptXiJZKJ1Z1GvKQuJVcDzYMDtwrI82ycPcDFQFntj2zcx1HEolcu5BqRrqsj-fjRE_bti4vGCFoV_fCrwePUFpRnEOyV-OCl7W5IYChdMWlA8f_LVsFQmNchkoFi3Omi0VsVDJfGhOhn84sc9l9OflhjXYBdFQ_N2_I8O-iR5t0qC6zSG8tJ9wYf0-qZl6H0r0EbgR6ZxTrQ25xnLPV-ZvZyXzCuE1iEhL0dIjdP2t45Pk" charset="UTF-8"></script></head>
 </head>
-<body>
- <div>
-	<h4>Current Projects</h4>
-		<table>
+
+
+
+<nav th:fragment = "navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#"> Project IO</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
 	
-			<thead>
-				<tr>
-					<th>Project Name</th>
-					<th>Project Stage</th>
-				</tr>
-			</thead>
-			
-		<tbody>
-		<tr th:each="aProject : ${projectsList}">
-			<td th:text="${aProject.name}" />
-			<td th:text="${aProject.stage}"/>
-			</tr>
-		</tbody>
-	</table>
-</div>	
-
-
-<div>
-	<h4>Current Employees</h4>
-		<table>
-	
-			<thead>
-				<tr>
-					<th>Employee First Name</th>
-					<th>Employee Second Name</th>
-					<th>Employee Email</th>
-					</tr>
-			</thead>
-			
-		<tbody>
-		<tr th:each="aEmployee : ${employeeList}">
-			<td th:text="${aEmployee.firstName}" />
-			<td th:text="${aEmployee.lastName}"/>
-			<td th:text="${aEmployee.email}"/>
-			</tr>
-		</tbody>
-	</table>
-</div>	
-
-
-</body>
- 
+	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+	      <li class="nav-item active">
+	        <a class="nav-link" th:href="@{/}">Home</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" th:href="@{/employees}">Employees</a>
+	      </li>
+	            <li class="nav-item">
+	        <a class="nav-link" th:href="@{/projects}">Projects</a>
+	      </li>
+	      
+	    </ul>
+	  </div>
+	</nav>
 </html>
