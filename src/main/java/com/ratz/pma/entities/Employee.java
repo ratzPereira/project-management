@@ -46,9 +46,6 @@ public class Employee {
 	}
 	
 	
-	
-	
-	
 
 
 	public List<Project> getProjects() {

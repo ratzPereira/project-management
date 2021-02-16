@@ -32,13 +32,13 @@
 					</tbody>
 				</table>
 			</div>
-		
 
 
-		<div class="col-md-4">
 
-			<canvas id="myDoughnutChart" height="50" width="50"></canvas>
-</div>
+			<div class="col-md-4">
+
+				<canvas id="myDoughnutChart" height="50" width="50"></canvas>
+			</div>
 		</div>
 	</div>
 
@@ -53,15 +53,15 @@
 						<tr>
 							<th>Employee First Name</th>
 							<th>Employee Second Name</th>
-							<th>Employee Email</th>
+							<th>Project Count</th>
 						</tr>
 					</thead>
 
 					<tbody>
-						<tr th:each="aEmployee : ${employeeList}">
-							<td th:text="${aEmployee.firstName}" />
-							<td th:text="${aEmployee.lastName}" />
-							<td th:text="${aEmployee.email}" />
+						<tr th:each="aEmployeeProjectCount : ${employeeListProjectCount}">
+							<td th:text="${aEmployeeProjectCount.firstName}" />
+							<td th:text="${aEmployeeProjectCount.lastName}" />
+							<td th:text="${aEmployeeProjectCount.projectCount}" />
 						</tr>
 					</tbody>
 				</table>
