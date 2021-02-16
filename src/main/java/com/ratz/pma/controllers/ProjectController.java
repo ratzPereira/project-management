@@ -46,20 +46,13 @@ public class ProjectController {
 	}
 	
 	@PostMapping("/save")
-	public String createPost(Project project, @RequestParam List<Long> employees, Model model) {
+	public String createPost(Project project,  Model model) {
 	
 		//saving project to db using repository
 		proRepo.save(project);
 		
-		Iterable<Employee> chosenEmployees = empRepo.findAllById(employees);
-		
-		for(Employee emp: chosenEmployees) {
-			emp.setProject(project);
-			empRepo.save(emp);
-			
-		}
 		//use redirect to prevent duplicate entry 
-		return "redirect:/projects/new";
+		return "redirect:/projects";
 	}
 	
 }
