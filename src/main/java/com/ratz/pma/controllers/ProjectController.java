@@ -14,21 +14,23 @@ import com.ratz.pma.dao.EmployeeRepository;
 import com.ratz.pma.dao.ProjectRepository;
 import com.ratz.pma.entities.Employee;
 import com.ratz.pma.entities.Project;
+import com.ratz.pma.services.EmployeeService;
+import com.ratz.pma.services.ProjectService;
 
 @Controller
 @RequestMapping("/projects")
 public class ProjectController {
 
 	@Autowired
-	ProjectRepository proRepo;
+	ProjectService proService;
 	
 	@Autowired
-	EmployeeRepository empRepo;
+	EmployeeService empService;
 		
 	
 	@GetMapping
 	public String displayEmployees(Model model) {
-		List<Project> projects =  proRepo.findAll();
+		List<Project> projects =  proService.getAll();
 		model.addAttribute("projects",projects);
 		
 		return "/projects/list-projects";
@@ -38,7 +40,7 @@ public class ProjectController {
 	public String displayProjectForm(Model model) {
 		
 		Project aProject = new Project();
-		List<Employee> employees = empRepo.findAll();
+		List<Employee> employees = empService.getAll();
 		model.addAttribute("allEmployees", employees);
 		model.addAttribute("project", aProject);
 		
@@ -49,7 +51,7 @@ public class ProjectController {
 	public String createPost(Project project,  Model model) {
 	
 		//saving project to db using repository
-		proRepo.save(project);
+		proService.save(project);
 		
 		//use redirect to prevent duplicate entry 
 		return "redirect:/projects";

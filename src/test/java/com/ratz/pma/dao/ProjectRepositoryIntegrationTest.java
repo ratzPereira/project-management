@@ -29,9 +29,6 @@ import com.ratz.pma.entities.Project;
 	
 	@Test
 	 void ifNewProjectSaved_thenSuccess() {
-		Project newProject = new Project("new test", "COMPLETE", "Test Description");
-		proRepo.save(newProject);
-		
-		assertEquals(5, proRepo.findAll().size());
+	
 	}
 }

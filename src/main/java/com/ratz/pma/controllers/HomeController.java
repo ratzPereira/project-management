@@ -18,6 +18,8 @@ import com.ratz.pma.dto.EmployeeProject;
 import com.ratz.pma.dto.ProjectsStage;
 import com.ratz.pma.entities.Employee;
 import com.ratz.pma.entities.Project;
+import com.ratz.pma.services.EmployeeService;
+import com.ratz.pma.services.ProjectService;
 
 @Controller
 public class HomeController {
@@ -26,10 +28,10 @@ public class HomeController {
 	private String version;
 	
 	@Autowired
-	ProjectRepository proRepo;
+	ProjectService proService;
 
 	@Autowired
-	EmployeeRepository empRepo;
+	EmployeeService empService;
 
 	@GetMapping("/")
 	public String displayHome(Model model) throws JsonProcessingException {
@@ -39,10 +41,10 @@ public class HomeController {
 		
 		Map<String, Object> map = new HashMap<>();
 		
-		List<Project> projects = proRepo.findAll();
+		List<Project> projects = proService.getAll();
 		model.addAttribute("projectsList", projects);
 		
-		List<ProjectsStage> projectsStage = proRepo.projectStatus();
+		List<ProjectsStage> projectsStage = proService.getProjectStatus();
 		
 		//Lets convert project data object into a json to use in javascript
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -51,7 +53,7 @@ public class HomeController {
 		model.addAttribute("projectStatusCnt", jsonString);
 
 		
-		List<EmployeeProject> employeesProjectCount = empRepo.employeeProjects();
+		List<EmployeeProject> employeesProjectCount = empService.employeeProject();
 		model.addAttribute("employeeListProjectCount", employeesProjectCount);
 
 		return "main/home";
