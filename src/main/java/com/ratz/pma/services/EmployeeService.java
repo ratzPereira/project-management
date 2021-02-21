@@ -1,6 +1,7 @@
 package com.ratz.pma.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -28,5 +29,13 @@ public class EmployeeService {
 	
 	public List<EmployeeProject> employeeProject() {
 		return empRepo.employeeProjects();
+	}
+	
+	public Optional<Employee> getEmployeeById(long id) {
+		return empRepo.findById(id);
+	}
+	
+	public void deleteEmployee(long id) {
+		empRepo.deleteById(id);
 	}
 }
