@@ -37,10 +37,10 @@ public class EmployeeApiController {
 	@Autowired
 	EmployeeRepository empRepo;
 	
-//	@GetMapping()
-//	public List<Employee> getEmployees() {
-//		return empService.getAll();
-//	}
+	@GetMapping()
+	public Iterable<Employee> getEmployees() {
+		return empService.getAll();
+	}
 
 	@GetMapping("/{id}")
 	public Optional<Employee> getEmployeeById(@PathVariable("id") Long id) {
