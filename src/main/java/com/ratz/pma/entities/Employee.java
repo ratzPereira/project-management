@@ -19,6 +19,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ratz.pma.validators.UniqueValue;
 
 @Entity
 public class Employee {
@@ -39,17 +40,14 @@ public class Employee {
 	
 	@NotNull
 	@Email
-	@Column(unique= true)
+	@UniqueValue
 	private String email;
 	
 	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE,CascadeType.REFRESH, CascadeType.PERSIST }, fetch = FetchType.LAZY)
 	@JoinTable(name="project_employee", joinColumns=@JoinColumn(name="employee_id"), inverseJoinColumns=@JoinColumn(name="project_id"))
 	@JsonIgnore
 	private List<Project> projects;
-	
 
-	
-	
 	
 	public Employee() {
 		
