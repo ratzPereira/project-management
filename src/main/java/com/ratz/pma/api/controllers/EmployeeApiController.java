@@ -43,8 +43,8 @@ public class EmployeeApiController {
 	}
 
 	@GetMapping("/{id}")
-	public Optional<Employee> getEmployeeById(@PathVariable("id") Long id) {
-		return empService.getEmployeeById(id);
+	public Employee getEmployeeById(@PathVariable("id") Long id) {
+		return empService.findByEmployeeId(id);
 	}
 
 	@PostMapping(consumes = "application/json")
@@ -62,7 +62,7 @@ public class EmployeeApiController {
 	@PatchMapping(path = "/{id}", consumes = "application/json")
 	@ResponseStatus(HttpStatus.OK)
 	public Employee partialEmployeeUpdate(@PathVariable long id, @RequestBody Employee patchEmployee) {
-		Employee emp = empService.getEmployeeById(id).get();
+		Employee emp = empRepo.findById(id).get();
 
 		if (patchEmployee.getEmail() != null) {
 			emp.setEmail(patchEmployee.getEmail());

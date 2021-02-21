@@ -11,9 +11,14 @@
 	<div class="container">
 		<form th:action="@{/employees/save}" th:object="${employee}" method="POST">
 		
+		<!-- This will be used to bind to the user that was clicked on  USED ONLY FOR UPDATE -->
+		<input type="hidden" th:fiel="${employee.employeeId}" />
+		
 		<input type="text" placeholder="Employee First name" th:field="${employee.firstName}">
 		<input type="text" placeholder="Employee Last name" th:field="${employee.lastName}">
 		<input type="text" placeholder="Employee email" th:field="${employee.email}">
+		
+		
 		
 	
 		

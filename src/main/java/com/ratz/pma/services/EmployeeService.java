@@ -31,11 +31,17 @@ public class EmployeeService {
 		return empRepo.employeeProjects();
 	}
 	
-	public Optional<Employee> getEmployeeById(long id) {
-		return empRepo.findById(id);
+	public Employee findByEmployeeId(long theId) {
+		// TODO Auto-generated method stub
+		return empRepo.findByEmployeeId(theId);
 	}
 	
 	public void deleteEmployee(long id) {
 		empRepo.deleteById(id);
+	}
+	
+	public void delete(Employee emp) {
+		empRepo.delete(emp);
+		
 	}
 }

@@ -98,5 +98,11 @@ public class Employee {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
+	public Employee get() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
